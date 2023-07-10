@@ -1,22 +1,25 @@
 {
   "name": "httprpc",
   "version": "1.0.0",
-  "description": "",
+  "description": "Build function-based API with minimal code and end-to-end type safety",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "uvu"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@koa/bodyparser": "^5.0.0",
+    "debug": "^4.3.4",
     "flat": "^5.0.2",
     "koa": "^2.14.2",
     "require-dir": "^1.2.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "supertest": "^6.3.3",
+    "uvu": "^0.5.6"
   }
 }

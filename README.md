@@ -74,3 +74,12 @@ module.exports = function (a, b) {
 # 写在最后
 
 这是一个demo项目，特性足够了，其他自己改吧
+
+# TODO
+
+1. 将最简单中间件单独发包
+    1. 支持所有http verbs
+1. 将文件即路由功能单独发包
+1. 将koa-compose引入，对鉴权生命周期等提供定制功能
+1. 改成ts
+1. 提供项目cli脚手架等

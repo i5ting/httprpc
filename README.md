@@ -89,7 +89,7 @@ module.exports = function (a, b) {
     1. 支持所有http verbs，使用methods包
 1. 将文件即路由功能单独发包
 1. 将koa-compose引入，对鉴权生命周期等提供定制功能
-1. 改成ts + pnpm，把fetch client实现一下
+1. 改成ts + pnpm + changeset，把fetch client实现一下
 1. 提供项目cli脚手架等
 
 

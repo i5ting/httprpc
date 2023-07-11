@@ -1,4 +1,4 @@
-module.exports = function a(p1,b){
+module.exports = function (p1,b){
     // console.dir(this.path)
     // console.dir(this.query)
     if (this.method === 'POST'){

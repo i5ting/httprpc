@@ -4,6 +4,12 @@
 
 > Build function-based API with minimal code and end-to-end type safety
 
+对比fetch，你需要关注http path、verb，query，但httpc不需要。
+
+TO晔明，自己了解rpc原理。本质上，httpc就是基于http的rpc方式调用。
+
+补一张图。
+
 # 约定
 
 ## 方式1
@@ -34,7 +40,7 @@ $ curl -H "Content-Type: application/json" -X POST -d '["22hello", "001"]'  http
 函数写法
 
 ```
-module.exports = function a(p1,b){
+module.exports = function (p1,b){
     console.dir(this.path)
     console.dir(this.query)
     if (this.method === 'POST'){
@@ -77,9 +83,23 @@ module.exports = function (a, b) {
 
 # TODO
 
+优雅的实现（by晔明）
+
 1. 将最简单中间件单独发包
-    1. 支持所有http verbs
+    1. 支持所有http verbs，使用methods包
 1. 将文件即路由功能单独发包
 1. 将koa-compose引入，对鉴权生命周期等提供定制功能
-1. 改成ts + pnpm
+1. 改成ts + pnpm，把fetch client实现一下
 1. 提供项目cli脚手架等
+
+
+举例：增加jwt鉴权
+
+确定
+
+> app.use(jwt({ secret: 'shared-secret' }));
+
+想想koa-compose
+
+> const middleware = compose([ jwt({ secret: 'shared-secret' }) , router ]) 
+

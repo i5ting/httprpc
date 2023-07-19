@@ -29,7 +29,7 @@ Content-Type: application/json
 [ serialized-parameters ]
 ```
 
-cli 
+cli
 
 ```
 $ curl -H "Content-Type: application/json" -X POST -d '["22hello", "001"]'  http://127.0.0.1:3000/a/a
@@ -46,7 +46,7 @@ module.exports = function (p1,b){
     if (this.method === 'POST'){
         return "this is a post"
     }
-    
+
     return `${p1}+${b}`
 }
 ```
@@ -101,5 +101,23 @@ module.exports = function (a, b) {
 
 想想koa-compose
 
-> const middleware = compose([ jwt({ secret: 'shared-secret' }) , router ]) 
+> const middleware = compose([ jwt({ secret: 'shared-secret' }) , router ])
 
+
+> 将最简单中间件单独发包示例
+
+```
+const httprpc = require('httprpc)
+
+app.fn('com.xxx.yyy', function(){
+
+})
+
+
+app.use(httprpc({
+    ...
+}))
+
+app.listen(3000)
+
+```

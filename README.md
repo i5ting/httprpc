@@ -106,11 +106,11 @@ module.exports = function (a, b) {
 
 > 将最简单中间件单独发包示例
 
-```
-const httprpc = require('httprpc)
+```js
+const httprpc = require('httprpc')
 
-app.fn('com.xxx.yyy', function(){
-
+app.fn('com.xxx.yyy', function(a, b){
+   return a+b
 })
 
 
@@ -119,5 +119,16 @@ app.use(httprpc({
 }))
 
 app.listen(3000)
+
+```
+
+client
+
+```js
+const client = require('@httprpc/client')('127.0.0.1','3000')
+
+const result = client.call('com.xxx.yy', 'a', 'b')
+
+console.log(result) // ab
 
 ```

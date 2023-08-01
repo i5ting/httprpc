@@ -1,25 +1,48 @@
 {
   "name": "httprpc",
   "version": "1.0.0",
+  "private": true,
   "description": "Build function-based API with minimal code and end-to-end type safety",
-  "main": "index.js",
-  "scripts": {
-    "start": "nodemon index.js",
-    "test": "uvu"
-  },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "husky install",
+    "start": "pnpm build && ts-node ./samples/run.ts",
+    "watch": "pnpm -r run watch",
+    "build": "pnpm -r run build",
+    "clean": "pnpm -r run clean",
+    "test": "pnpm -r run test",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm build && pnpm release:only",
+    "release:only": "changeset publish --registry=https://registry.npmjs.com/",
+    "format": "pnpm _phase:fmt --write",
+    "lint": "pnpm _phase:lint --fix",
+    "check": "pnpm _phase:fmt --check && pnpm _phase:lint && pnpm _phase:cspell",
+    "ci": "pnpm _phase:fmt --no-color --check && pnpm _phase:lint --no-color && pnpm _phase:cspell --no-color",
+    "_phase:fmt": "prettier \"**/*.{js,ts,md}\" --loglevel=warn",
+    "_phase:lint": "eslint \"**/*.{js,ts}\"",
+    "_phase:cspell": "cspell \"**/*.{js,ts,md,json}\" --no-progress"
+  },
   "dependencies": {
-    "@koa/bodyparser": "^5.0.0",
-    "debug": "^4.3.4",
-    "flat": "^5.0.2",
-    "koa": "^2.14.2",
-    "require-dir": "^1.2.0"
+    "@httprpc/core": "workspace:*",
+    "uvu": "^0.5.6"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22",
-    "supertest": "^6.3.3",
-    "uvu": "^0.5.6"
-  }
+    "@changesets/cli": "^2.25.0",
+    "@types/node": "^18.7.18",
+    "@typescript-eslint/eslint-plugin": "^5.40.0",
+    "@typescript-eslint/parser": "^5.40.0",
+    "cspell": "^6.12.0",
+    "eslint": "^8.25.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-tsdoc": "^0.2.17",
+    "husky": "^8.0.1",
+    "prettier": "^2.7.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.3"
+  },
+  "author": "i5ting",
+  "license": "MIT"
 }
